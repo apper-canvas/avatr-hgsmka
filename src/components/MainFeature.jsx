@@ -237,6 +237,7 @@ export default function MainFeature() {
                           <div className="w-16 h-20 rounded-b-full" style={{ backgroundColor: avatarOptions.hairColor }}></div>
                           <div className="w-16 h-20 rounded-b-full" style={{ backgroundColor: avatarOptions.hairColor }}></div>
                       </div>
+                      </div>
                     )}
                   </div>
                   
