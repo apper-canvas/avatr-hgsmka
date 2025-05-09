@@ -187,8 +187,6 @@ export default function MainFeature() {
                         <div className="w-2 h-2 rounded-full bg-white relative top-1 left-10"></div>
                       )}
                       
-                        style={{ backgroundColor: avatarOptions.eyeColor }}
-                      />
                     </div>
                   </div>
                   
