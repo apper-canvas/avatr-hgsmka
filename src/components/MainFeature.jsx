@@ -136,11 +136,57 @@ export default function MainFeature() {
                   <div className="absolute w-full top-1/3 flex justify-center">
                     <div className="flex gap-8 w-full justify-center">
                       <div 
-                        className={`w-5 h-${avatarOptions.eyeStyle === 'slim' ? '2' : avatarOptions.eyeStyle === 'round' ? '5 rounded-full' : '4'} rounded-lg`}
+                        className={`w-5 ${
+                          avatarOptions.eyeStyle === 'slim' 
+                            ? 'h-2' 
+                            : avatarOptions.eyeStyle === 'round' 
+                              ? 'h-5 rounded-full' 
+                              : avatarOptions.eyeStyle === 'wink'
+                                ? 'h-1'
+                                : avatarOptions.eyeStyle === 'closed'
+                                  ? 'h-1'
+                                  : 'h-4'
+                        } rounded-lg`}
                         style={{ backgroundColor: avatarOptions.eyeColor }}
                       />
                       <div 
-                        className={`w-5 h-${avatarOptions.eyeStyle === 'slim' ? '2' : avatarOptions.eyeStyle === 'round' ? '5 rounded-full' : '4'} rounded-lg`}
+                        className={`w-5 ${
+                          avatarOptions.eyeStyle === 'slim' 
+                            ? 'h-2' 
+                            : avatarOptions.eyeStyle === 'round' 
+                              ? 'h-5 rounded-full' 
+                              : avatarOptions.eyeStyle === 'wink'
+                                ? 'h-4'
+                                : avatarOptions.eyeStyle === 'closed'
+                                  ? 'h-1'
+                                  : 'h-4'
+                        } rounded-lg`}
+                        style={{ backgroundColor: avatarOptions.eyeColor }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Additional eye details for certain styles */}
+                  <div className="absolute w-full top-1/3 flex justify-center">
+                    <div className="flex gap-8 w-full justify-center">
+                      {avatarOptions.eyeStyle === 'normal' && (
+                        <>
+                          <div className="w-2 h-2 rounded-full bg-white relative top-1 left-1"></div>
+                          <div className="w-2 h-2 rounded-full bg-white relative top-1 left-1"></div>
+                        </>
+                      )}
+                      
+                      {avatarOptions.eyeStyle === 'round' && (
+                        <>
+                          <div className="w-2 h-2 rounded-full bg-white relative top-2 left-1"></div>
+                          <div className="w-2 h-2 rounded-full bg-white relative top-2 left-1"></div>
+                        </>
+                      )}
+                      
+                      {avatarOptions.eyeStyle === 'wink' && (
+                        <div className="w-2 h-2 rounded-full bg-white relative top-1 left-10"></div>
+                      )}
+                      
                         style={{ backgroundColor: avatarOptions.eyeColor }}
                       />
                     </div>
@@ -162,11 +208,36 @@ export default function MainFeature() {
                       <div className="w-full h-20 rounded-t-full overflow-hidden"
                         style={{ backgroundColor: avatarOptions.hairColor }}
                       >
-                        <div className="flex justify-between px-2">
+                        <div className="flex justify-between px-2 pt-2">
                           <div className="w-5 h-5 rounded-full mt-16" style={{ backgroundColor: avatarOptions.faceColor }}></div>
                           <div className="w-5 h-5 rounded-full mt-14" style={{ backgroundColor: avatarOptions.faceColor }}></div>
                           <div className="w-5 h-5 rounded-full mt-16" style={{ backgroundColor: avatarOptions.faceColor }}></div>
                         </div>
+                      </div>
+                    )}
+                    {avatarOptions.hairStyle === 'straight' && (
+                      <div className="w-full h-28 rounded-t-full overflow-hidden"
+                        style={{ backgroundColor: avatarOptions.hairColor }}
+                      >
+                        <div className="flex justify-between">
+                          <div className="w-2 h-full bg-black opacity-10"></div>
+                          <div className="w-2 h-full bg-black opacity-10"></div>
+                          <div className="w-2 h-full bg-black opacity-10"></div>
+                        </div>
+                      </div>
+                    )}
+                    {avatarOptions.hairStyle === 'bald' && (
+                      <div className="w-full h-2 rounded-t-full overflow-hidden"
+                        style={{ backgroundColor: avatarOptions.hairColor }}
+                      />
+                    )}
+                    {avatarOptions.hairStyle === 'bob' && (
+                      <div className="relative w-full h-16 rounded-t-full overflow-hidden"
+                        style={{ backgroundColor: avatarOptions.hairColor }}
+                      >
+                        <div className="absolute -bottom-10 left-0 right-0 h-20 flex justify-between">
+                          <div className="w-16 h-20 rounded-b-full" style={{ backgroundColor: avatarOptions.hairColor }}></div>
+                          <div className="w-16 h-20 rounded-b-full" style={{ backgroundColor: avatarOptions.hairColor }}></div>
                       </div>
                     )}
                   </div>
@@ -177,13 +248,18 @@ export default function MainFeature() {
                       <div className="w-12 h-5 border-b-4 border-black rounded-b-full"></div>
                     )}
                     {avatarOptions.mouthStyle === 'laugh' && (
-                      <div className="w-12 h-6 bg-black rounded-b-full"></div>
+                      <div className="w-14 h-8 bg-black rounded-full">
+                        <div className="w-10 h-4 bg-white rounded-t-full relative top-1 left-2"></div>
+                      </div>
                     )}
                     {avatarOptions.mouthStyle === 'neutral' && (
-                      <div className="w-8 h-1 bg-black rounded-full"></div>
+                      <div className="w-10 h-1 bg-black rounded-full"></div>
                     )}
                     {avatarOptions.mouthStyle === 'surprise' && (
-                      <div className="w-6 h-6 bg-black rounded-full"></div>
+                      <div className="w-8 h-8 bg-black rounded-full"></div>
+                    )}
+                    {avatarOptions.mouthStyle === 'serious' && (
+                      <div className="w-8 h-1 bg-black rounded-full transform rotate-12"></div>
                     )}
                   </div>
                   
@@ -204,6 +280,22 @@ export default function MainFeature() {
                         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-6 rounded-t-lg" style={{ backgroundColor: `${avatarOptions.clothingColor}99` }}></div>
                       </div>
                     )}
+                    {avatarOptions.clothingStyle === 'sweater' && (
+                      <div className="relative w-full h-24 rounded-t-lg" style={{ backgroundColor: avatarOptions.clothingColor }}>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-8 rounded-t-xl bg-white">
+                          <div className="w-full h-2 bg-gray-200 relative top-3"></div>
+                          <div className="w-full h-2 bg-gray-200 relative top-4"></div>
+                        </div>
+                      </div>
+                    )}
+                    {avatarOptions.clothingStyle === 'tank' && (
+                      <div className="relative w-full h-24 rounded-t-lg" style={{ backgroundColor: avatarOptions.clothingColor }}>
+                        <div className="absolute top-0 left-0 w-10 h-8 bg-white rounded-br-3xl"></div>
+                        <div className="absolute top-0 right-0 w-10 h-8 bg-white rounded-bl-3xl"></div>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-4 bg-white rounded-b-xl"></div>
+                      </div>
+                    )}
+                    
                   </div>
                 </div>
               </div>
